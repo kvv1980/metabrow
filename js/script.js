@@ -54,6 +54,29 @@ jQuery(document).ready(function ($) {
   });
  });
 
+ $(document).on('click', '.popup-total .btn-wrap .btn-default', function (e) {
+  e.preventDefault();
+  $.fancybox.close();
+  $.fancybox.open( $('#start'), {
+   touch:false,
+   autoFocus:false,
+   beforeShow : function(e){
+    $('.question-wrap .step').removeClass('is-active is-selected');
+    $('.number-question').html('1');
+    $('.question-wrap .step:first-child').addClass('is-active');
+    $(".question-wrap .step input:checked").addClass('is');
+
+    var selected = [];
+    $('.question-wrap .step input:checked').each(function() {
+     selected.push($(this).prop('checked', false));
+    });
+   },
+  });
+ });
+
+
+
+
 
  // question
  $(window).on('load', function (e){
